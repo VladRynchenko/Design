@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         setupNavigation()
     }
 
@@ -47,7 +47,8 @@ class MainActivity : AppCompatActivity() {
      *
      * Delegate this to Navigation.
      */
-    override fun onSupportNavigateUp() = navigateUp(findNavController(R.id.nav_host_fragment), binding.drawerLayout)
+    override fun onSupportNavigateUp() =
+        navigateUp(findNavController(R.id.nav_host_fragment), binding.drawerLayout)
 
     /**
      * Setup Navigation for this Activity
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
-            when(destination.id) {
+            when (destination.id) {
                 R.id.home -> {
                     toolBar.setDisplayShowTitleEnabled(false)
                     binding.heroImage.visibility = View.VISIBLE
