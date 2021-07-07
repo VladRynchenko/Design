@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = HomeFragmentBinding.inflate(inflater)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        binding.viewmodel = viewModel
+        binding.viewModel = viewModel
 
         viewModel.navigateToSearch.observe(viewLifecycleOwner, Observer { navigate ->
             if (navigate) {
